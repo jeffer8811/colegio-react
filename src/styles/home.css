@@ -1,0 +1,549 @@
+/* =========================================
+   VARIABLES Y RESET
+   ========================================= */
+:root {
+  --primary: #004a99;
+  --primary-dark: #002a5c;
+  --secondary: #ff7300;
+  --white: #ffffff;
+  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 80px 0;
+}
+
+/* Imagen de fondo con filtro */
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070') center/cover;
+  filter: brightness(0.5) contrast(1.1);
+  z-index: 0;
+}
+
+/* Overlay gradiente para asegurar legibilidad */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0, 42, 92, 0.7), transparent);
+  z-index: 1;
+}
+
+.hero-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Tarjeta Glassmorphism */
+.hero-glass-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 50px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.badge {
+  background: var(--secondary);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(255, 115, 0, 0.3);
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 35px;
+}
+
+/* Botones */
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 15px 35px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+}
+
+.btn-primary {
+  background: var(--secondary);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(255, 115, 0, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: var(--primary);
+}
+
+/* =========================================
+   HERO GALLERY (Animaciones Hover)
+   ========================================= */
+.hero-gallery {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.gallery-item img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 4px solid white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: var(--transition);
+}
+
+.item-1 { grid-row: span 2; }
+.item-1 img { height: 450px; }
+.item-2 img, .item-3 img { height: 215px; }
+
+/* Efecto de elevación y rotación en las fotos */
+.gallery-item:hover img {
+  transform: scale(1.08) translateY(-15px) rotate(-3deg);
+  border-color: var(--secondary);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+
+.item-1:hover img {
+  transform: scale(1.05) translateY(-15px) rotate(2deg);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .hero-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-gallery {
+    display: none; /* Ocultar galería en móvil para mejor carga */
+  }
+  .buttons {
+    justify-content: center;
+  }
+  .hero-glass-card {
+    padding: 30px;
+  }
+}
+
+
+/* segunda parte*/
+/* =========================================
+   GRID DE PILARES (Contenedor)
+   ========================================= */
+.grid {
+  display: grid;
+  /* Crea 3 columnas iguales; en pantallas pequeñas se apilan solas */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+  align-items: stretch; /* Asegura que todas las cards tengan la misma altura */
+}
+
+/* =========================================
+   TARJETAS (Cards)
+   ========================================= */
+.card {
+  background: var(--white);
+  padding: 40px 30px;
+  border-radius: 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  /* Sombra suave multicapa para profundidad */
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.05),
+    0 5px 10px rgba(0, 0, 0, 0.03);
+    
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Colores de acento en el borde superior */
+.card-1 { border-top: 6px solid #004a99; } /* Azul */
+.card-2 { border-top: 6px solid #ff7300; } /* Naranja */
+.card-3 { border-top: 6px solid #00c853; } /* Verde */
+
+.card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 25px 50px rgba(0, 42, 92, 0.15);
+}
+
+/* =========================================
+   ELEMENTOS INTERNOS
+   ========================================= */
+
+/* Contenedor del Icono (Emoji) */
+.icon-wrapper {
+  width: 80px;
+  height: 80px;
+  background: var(--bg-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  transition: all 0.4s ease;
+}
+
+.card:hover .icon-wrapper {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.1) rotate(10deg);
+  box-shadow: 0 10px 20px rgba(0, 74, 153, 0.2);
+}
+
+.card h3 {
+  color: var(--primary-dark);
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+
+.card p {
+  color: var(--text-light);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  flex-grow: 1; /* Empuja el botón hacia abajo para que todos queden alineados */
+}
+
+/* Enlace/Botón estilizado */
+.card-link {
+  margin-top: 25px;
+  text-decoration: none;
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 10px 25px;
+  border-radius: 50px;
+  background: rgba(255, 115, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.card-link:hover {
+  background: var(--secondary);
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255, 115, 0, 0.3);
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr; /* Una columna en móvil */
+    padding: 0 10px;
+  }
+  
+  .card {
+    padding: 35px 20px;
+  }
+}
+
+/* tecera parte */
+
+
+/* =========================================
+   SECCIÓN SOBRE NOSOTROS (SPLIT)
+   ========================================= */
+
+.split-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-gray); /* Fondo gris suave */
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  gap: 80px; /* Espacio amplio entre texto e imagen */
+  width: 100%;
+}
+
+/* Lado del Texto */
+.text-side {
+  flex: 1;
+}
+
+.text-side h2 {
+  font-size: 2.8rem;
+  color: var(--primary-dark);
+  text-align: left;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+/* Línea naranja decorativa bajo el título */
+.text-side h2::after {
+  content: '';
+  display: block;
+  width: 70px;
+  height: 5px;
+  background: var(--secondary);
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.text-side p {
+  font-size: 1.15rem;
+  color: var(--text-light);
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+/* Lista de beneficios estilizada */
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.benefits-list li {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  background: var(--white);
+  padding: 15px 20px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, color 0.3s ease;
+  width: fit-content;
+  border-left: 4px solid var(--secondary); /* Acento naranja */
+}
+
+.benefits-list li:hover {
+  transform: translateX(10px);
+  color: var(--secondary);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Lado de la Imagen con adorno */
+.image-side {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.image-side img {
+  width: 100%;
+  height: auto;
+  min-height: 400px;
+  object-fit: cover;
+  border-radius: 40px; /* Bordes muy redondeados */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  display: block;
+}
+
+/* Elemento decorativo detrás de la imagen (puntos o cuadro) */
+.image-side::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(var(--secondary) 20%, transparent 20%);
+  background-size: 20px 20px;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 968px) {
+  .flex-container {
+    flex-direction: column; /* Se apila en móviles */
+    gap: 50px;
+    text-align: center;
+  }
+
+  .text-side h2 {
+    text-align: center;
+  }
+
+  .text-side h2::after {
+    margin: 10px auto 0; /* Centra la línea naranja */
+  }
+
+  .benefits-list li {
+    margin: 0 auto; /* Centra los items de la lista */
+    text-align: left;
+  }
+
+  .image-side img {
+    min-height: 300px;
+  }
+}
+
+/* cuarta parte*/
+
+
+.contact-footer {
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+.contact-card {
+  background: var(--primary);
+  color: white;
+  padding: 60px;
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+}
+
+.home-form {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.home-form input {
+  padding: 15px 25px;
+  border-radius: 50px;
+  border: none;
+  width: 300px;
+  outline: none;
+}
+
+.home-form .btn-primary {
+  background: var(--secondary);
+  border: none;
+}
+
+/* boton whasap  */
+
+.whatsapp-sidebar-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 40px; /* Distancia desde el suelo de la pantalla */
+  z-index: 1000;
+}
+
+.whatsapp-side-link {
+  background-color: #25d366;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  border-radius: 25px 0 0 25px; /* Redondeado solo a la izquierda */
+  text-decoration: none;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  box-shadow: -2px 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  
+  width: 56px; /* Ajuste para que el círculo se vea perfecto */
+  height: 56px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.whatsapp-side-link:hover {
+  width: 170px; /* Se expande hacia la izquierda */
+  background-color: #20ba5a;
+}
+
+.whatsapp-side-link svg {
+  flex-shrink: 0;
+}
+
+.whatsapp-side-link span {
+  font-size: 1rem;
+}
+
+/* Ajustes para Móvil */
+@media (max-width: 600px) {
+  .whatsapp-sidebar-bottom {
+    bottom: 20px;
+  }
+  
+  .whatsapp-side-link {
+    border-radius: 50%; /* Se vuelve un círculo flotante total */
+    width: 60px;
+    height: 60px;
+    justify-content: center;
+    padding: 0;
+    margin-right: 15px; /* Un poco de margen desde el borde en móvil */
+  }
+  
+  .whatsapp-side-link span {
+    display: none;
+  }
+  
+  /* En móvil no queremos que se expanda al tocarlo */
+  .whatsapp-side-link:hover {
+    width: 60px;
+  }
+}

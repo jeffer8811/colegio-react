@@ -1,0 +1,67 @@
+/* HERO */
+.niveles-hero {
+  height: 60vh;
+  background: url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1") center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-overlay {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  padding: 40px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* CONTENEDOR */
+.niveles-container {
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  background: #f7f9fc;
+}
+
+/* CARD */
+.nivel-card {
+  display: flex;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.nivel-card:hover {
+  transform: translateY(-5px);
+}
+
+/* IMAGEN */
+.nivel-card img {
+  width: 40%;
+  object-fit: cover;
+}
+
+/* TEXTO */
+.nivel-card div {
+  padding: 20px;
+}
+
+.nivel-card h2 {
+  margin-bottom: 10px;
+}
+
+/* ANIMACIÓN */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.6s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
