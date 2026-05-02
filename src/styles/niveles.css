@@ -1,67 +1,214 @@
-/* HERO */
+/* --- niveles.css (Versión Final Corregida) --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+.niveles-page {
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
+  color: #2c3e50;
+  overflow-x: clip;
+  width: 100%;
+}
+
+/* --- HERO SECTION --- */
 .niveles-hero {
-  height: 60vh;
-  background: url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1") center/cover;
+  height: 50vh;
+  /* Degradado profesional Navy */
+  background: linear-gradient(135deg, #002855 0%, #001a38 100%); 
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Burbuja decorativa estilo Inicial */
+.niveles-hero::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  top: -100px;
+  left: -50px;
+}
+
+.hero-overlay h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 10px;
+  z-index: 2;
   position: relative;
 }
 
-.hero-overlay {
-  background: rgba(0,0,0,0.5);
+/* --- SECCIONES DE NIVELES (ZIG-ZAG) --- */
+.nivel-section {
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.nivel-section:nth-child(even) {
+  background-color: #f9fbfd;
+}
+
+.nivel-content {
+  max-width: 1100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Inversión de columnas */
+.nivel-section.reverse .nivel-content {
+  direction: rtl;
+}
+
+.nivel-section.reverse .nivel-text {
+  direction: ltr;
+}
+
+/* --- TEXTO Y BADGE --- */
+.nivel-text .badge {
+  background: #1e5be0;
   color: white;
-  padding: 40px;
-  text-align: center;
-  border-radius: 10px;
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  display: inline-block;
 }
 
-/* CONTENEDOR */
-.niveles-container {
-  padding: 60px 20px;
+.nivel-text h2 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin: 20px 0;
+  font-weight: 800;
+}
+
+.nivel-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #546e7a;
+}
+
+/* --- FIX DE LISTA Y CHECKS CIRCULARES --- */
+.nivel-list {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0;
+}
+
+.nivel-list li {
+  position: relative;
+  padding-left: 50px; /* Espacio para que el círculo no tape el texto */
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #475569;
   display: flex;
-  flex-direction: column;
-  gap: 25px;
-  background: #f7f9fc;
+  align-items: center;
+  min-height: 35px;
 }
 
-/* CARD */
-.nivel-card {
-  display: flex;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  transition: 0.3s;
+/* El círculo verde (Inspirado en tu imagen) */
+.nivel-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  background-color: #81c784;
+  border-radius: 50%;
+  z-index: 1;
 }
 
-.nivel-card:hover {
-  transform: translateY(-5px);
+/* La palomita blanca interna */
+.nivel-list li::after {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 48%; 
+  transform: translateY(-50%) rotate(45deg);
+  width: 7px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2.5px 2.5px 0;
+  z-index: 2;
 }
 
-/* IMAGEN */
-.nivel-card img {
-  width: 40%;
+/* --- BOTÓN --- */
+.btn-saber-mas {
+  background: #4fc3f7;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 20px rgba(79, 195, 247, 0.3);
+}
+
+.btn-saber-mas:hover {
+  transform: scale(1.05) translateY(-3px);
+  background: #ffd54f;
+  color: #2c3e50;
+  box-shadow: 0 15px 25px rgba(255, 213, 79, 0.4);
+}
+
+/* --- IMÁGENES --- */
+.nivel-image img {
+  width: 100%;
+  height: 400px;
   object-fit: cover;
+  border-radius: 60px 20px 60px 20px;
+  box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.08);
+  transition: transform 0.5s ease;
 }
 
-/* TEXTO */
-.nivel-card div {
-  padding: 20px;
+.nivel-section:hover .nivel-image img {
+  transform: rotate(-2deg) scale(1.02);
 }
 
-.nivel-card h2 {
-  margin-bottom: 10px;
-}
-
-/* ANIMACIÓN */
+/* --- ANIMACIONES --- */
 .fade-up {
   opacity: 0;
-  transform: translateY(20px);
-  transition: 0.6s ease;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
 }
 
 .fade-up.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+  .nivel-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+  
+  .nivel-section.reverse .nivel-content {
+    direction: ltr;
+  }
+  
+  .nivel-image img {
+    height: 300px;
+    border-radius: 40px;
+  }
+  
+  .nivel-list {
+    display: inline-block;
+    text-align: left;
+  }
 }

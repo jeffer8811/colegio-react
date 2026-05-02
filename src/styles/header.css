@@ -83,7 +83,55 @@
   font-size: 26px;
   cursor: pointer;
 }
+/* Estilo del botón principal de Niveles */
+.dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #003366; /* Tu azul institucional */
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
 
+.dropdown-btn:hover {
+  color: #ffb800; /* Dorado al pasar el mouse */
+}
+
+/* La flecha o el símbolo + */
+.arrow {
+  margin-left: 5px;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+/* Rotación opcional del + cuando abres el menú */
+.dropdown:hover .arrow {
+  transform: rotate(45deg);
+  color: #ffb800;
+}
+
+/* Asegurar que el dropdown no se rompa */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; /* Aparece justo debajo del botón */
+  left: 0;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
 

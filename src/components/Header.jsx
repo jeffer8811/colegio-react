@@ -21,15 +21,18 @@ function Header() {
           <li><Link to="/nosotros" onClick={() => setOpen(false)}>Nosotros</Link></li>
 
           {/* DROPDOWN */}
-          <li className="dropdown">
-            <span>Niveles +</span>
+<li className="dropdown">
+  {/* Ahora "Niveles" es un enlace real */}
+  <Link to="/niveles" className="dropdown-btn">
+    Niveles <span className="arrow">+</span>
+  </Link>
 
-            <div className="dropdown-content">
-              <Link to="/niveles#inicial">🟠 Inicial</Link>
-              <Link to="/niveles#primaria">🟢 Primaria</Link>
-              <Link to="/niveles#secundaria">🔵 Secundaria</Link>
-            </div>
-          </li>
+  <div className="dropdown-content">
+    <Link to="/inicial">🟠 Inicial</Link>
+    <Link to="/primaria">🟢 Primaria</Link>
+    <Link to="/secundaria">🔵 Secundaria</Link>
+  </div>
+</li>
 
           <li className="matricula">
             <Link to="/matricula" onClick={() => setOpen(false)}>

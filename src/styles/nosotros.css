@@ -1,111 +1,297 @@
-/* HERO */
+/* --- VARIABLES LOCALES --- */
+:root {
+  --primary-color: #003366;
+  --accent-color: #ffb800;
+  --text-dark: #333;
+  --text-light: #666;
+  --bg-gray: #f9f9f9;
+  --transition: all 0.3s ease;
+}
+
+/* --- HERO SECTION --- */
 .hero-nosotros {
   position: relative;
   height: 60vh;
-  background: url('https://images.unsplash.com/photo-1588072432836-e10032774350') center/cover;
+  min-height: 400px;
+  background: url('https://images.unsplash.com/photo-1523050335392-93851179ae22?q=80&w=2070') no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   color: white;
 }
 
 .hero-nosotros .overlay {
   position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 42, 92, 0.6); /* Azul profundo con transparencia */
 }
 
 .hero-content {
   position: relative;
-  text-align: center;
+  z-index: 2;
 }
 
 .hero-content h1 {
-  font-size: 40px;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
 }
 
-/* SECCIONES */
+/* --- SECCIONES GENERALES --- */
 .section {
-  padding: 60px 20px;
+  padding: 80px 0;
 }
 
-.gray {
-  background: #f5f5f5;
+.section.gray {
+  background-color: var(--bg-gray);
 }
 
-.center {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-/* FLEX */
 .container-flex {
-  max-width: 1100px;
-  margin: auto;
   display: flex;
-  gap: 30px;
   align-items: center;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.container-flex img {
-  width: 50%;
-  border-radius: 10px;
+.text {
+  flex: 1;
 }
 
-/* GRID */
+.text h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.text p {
+  line-height: 1.8;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+.image-container {
+  flex: 1;
+}
+
+.image-container img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* --- GRID DE TARJETAS (Misión/Visión) --- */
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  max-width: 1100px;
-  margin: auto;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* CARD */
 .card {
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  padding: 40px;
+  border-radius: 15px;
   text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: var(--transition);
+  border-bottom: 5px solid transparent;
 }
 
-/* TEAM */
-.team-card {
-  text-align: center;
+.card:hover {
+  transform: translateY(-10px);
+  border-bottom: 5px solid var(--accent-color);
 }
 
-.team-card img {
-  width: 100px;
+.card h3 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+.section.gray {
+  background-color: #f4f7f9;
+  padding: 100px 0;
+}
+
+.card-pillar {
+  background: white;
+  padding: 50px 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto al pasar el mouse */
+.card-pillar:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 40px rgba(0, 42, 92, 0.15);
+}
+
+/* El cuadro del icono */
+.icon-box {
+  width: 70px;
+  height: 70px;
+  background-color: rgba(255, 184, 0, 0.1); /* Fondo suave dorado */
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  font-size: 2rem;
+  transition: 0.3s;
+}
+
+.card-pillar:hover .icon-box {
+  background-color: #ffb800; /* Se vuelve sólido al hover */
+  transform: rotate(15deg);
+}
+
+.card-pillar h3 {
+  color: #003366;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+/* Pequeña línea divisoria */
+.line-accent {
+  width: 40px;
+  height: 3px;
+  background-color: #ffb800;
+  margin: 0 auto 20px;
+  transition: width 0.3s ease;
+}
+
+.card-pillar:hover .line-accent {
+  width: 80px;
+}
+
+.card-pillar p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+/* Contenedor principal del flip */
+.flip-card {
+  background-color: transparent;
+  height: 350px; /* Ajusta según necesites */
+  perspective: 1000px; /* Necesario para el efecto 3D */
+}
+
+/* Este contenedor hace la rotación real */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Al pasar el mouse, rotamos 180 grados */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Estilo común para ambas caras */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Oculta la cara que no se ve */
+  backface-visibility: hidden;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Cara Frontal */
+.flip-card-front {
+  background-color: white;
+  color: #333;
+}
+
+.flip-card-front img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 4px solid #f0f0f0;
+}
+
+/* Cara Trasera */
+.flip-card-back {
+  background-color: #003366; /* El azul de tu colegio */
+  color: white;
+  transform: rotateY(180deg); /* Empieza ya rotada */
+}
+
+.flip-card-back h3 {
+  color: #ffb800; /* El dorado para resaltar */
   margin-bottom: 10px;
 }
 
-/* CTA */
-.cta {
-  background: #0d47a1;
-  color: white;
+.flip-card-back p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+/* Contenedor del título */
+.center.fade-up {
   text-align: center;
-  padding: 60px 20px;
+  margin-bottom: 60px; /* Espacio generoso antes de las tarjetas */
+  position: relative;
+  font-size: 2.8rem;
+  color: var(--primary-color);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.btn-primary {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: orange;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
+/* Línea decorativa debajo del título */
+.center.fade-up::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: var(--accent-color); /* El dorado que definimos */
+  margin: 15px auto 0;
+  border-radius: 2px;
 }
 
-/* RESPONSIVE */
+/* Ajuste para pantallas pequeñas */
 @media (max-width: 768px) {
+  .center.fade-up {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+}
+/* --- SECCIÓN CTA --- */
+
+
+/* --- RESPONSIVO --- */
+@media (max-width: 900px) {
   .container-flex {
     flex-direction: column;
+    text-align: center;
   }
 
-  .container-flex img {
-    width: 100%;
+  .hero-content h1 {
+    font-size: 2.5rem;
   }
 }
